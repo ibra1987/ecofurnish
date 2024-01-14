@@ -2,26 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* div{
+  background-color: #69382e;
+} */
+
+.fadeIn{
+  animation: fadeIn .7s ease-in forwards;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes fadeIn{
+  from {
+    opacity:0;
+  }
+  to{
+    opacity: 1;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.fadOut{
+  animation: fadeOut .7s ease-in forwards;
+
+}
+
+@keyframes fadeOut{
+  0% {
+    opacity:1;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity:0;
+  }
+}
+
+.expandable {
+  max-height: 0; /* Set initial max-height to 0 for a fully collapsed state */
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0; /* Set initial opacity to 0 for a fully transparent state */
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out; /* Include the transition property for max-height and opacity */
+}
+
+.expanded {
+  padding: 40px;
+  max-height: 500px; /* Set max-height to a larger value when expanded */
+  opacity: 1; /* Set opacity to 1 when expanded */
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out,padding 0.5s ease-in-out; /* Include the transition property for max-height and opacity */
+}
+
+.slideUp{
+  animation: SlideUp .5s ease-in-out;
+}
+
+@keyframes SlideUp{
+  from{
+    margin-top:200px
+  }
+  to{
+    margin-top: 0px;
+  }
+
+}
+
+.slideDown{
+  animation: SlideDown .5s ease-in-out;
+}
+
+@keyframes SlideDown{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+
 }
