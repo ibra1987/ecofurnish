@@ -11,11 +11,12 @@ export type ListingCardType = {
 };
 
 const ListingCard = ({ imgSrc, title, description }: ListingCardType) => {
+  let observer: IntersectionObserver ;
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
  if(typeof window !== "undefined"){
-  const observer = new IntersectionObserver(
+   observer = new IntersectionObserver(
     (entries) => {
       if (entries[0].isIntersecting) {
        setInView(true)
@@ -25,19 +26,21 @@ const ListingCard = ({ imgSrc, title, description }: ListingCardType) => {
     },
     { threshold: 0.2 } // Adjust the threshold as needed
   );
-  useEffect(() => {
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
+ 
 
  }
+
+ useEffect(() => {
+  if (ref.current) {
+    observer.observe(ref.current);
+  }
+
+  return () => {
+    if (ref.current) {
+      observer.unobserve(ref.current);
+    }
+  };
+}, []);
 
  
   return (

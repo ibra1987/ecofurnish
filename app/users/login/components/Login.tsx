@@ -46,7 +46,7 @@ const Login = () => {
         forgot password?
         </Link>
         <Link className="text-primary" href={"/users/reset-password"}>
-          don't have an account?
+          don&apos;t have an account?
        </Link>
        </div>
       </div>
