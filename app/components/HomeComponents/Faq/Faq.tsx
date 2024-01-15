@@ -16,7 +16,7 @@ const Faq = ({faq}:{faq:FaqType}) => {
         </span>
          </h2>
       <p className={`indent-3  ${expanded ? 'expanded ': "expandable" }`}>
-        {faq.answer}
+      <strong>{'> '}</strong>{faq.answer}
       </p>
 
     </div>

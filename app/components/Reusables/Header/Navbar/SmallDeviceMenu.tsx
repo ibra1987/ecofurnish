@@ -14,7 +14,7 @@ const [showMenu,setShowMenu]=useState(false)
 
   return (
     <nav className="w-full   flex lg:hidden relative ">
-{   showMenu ? navBar({close:()=>setShowMenu(false)}) : <RxHamburgerMenu className='cursor-pointer absolute text-2xl -top-5 right-0' onClick={()=>setShowMenu(true)}/>
+{   showMenu ? navBar({close:()=>setShowMenu(false)}) : <RxHamburgerMenu className='p-2 hover:border rounded cursor-pointer absolute text-5xl -top-12 right-0' onClick={()=>setShowMenu(true)}/>
 }
   </nav>
     )
@@ -28,7 +28,7 @@ export default SmallDeviceMenu
 function navBar({close}:{close:()=>void}){
     return(
         <div className="w-full flex justify-between relative ">
-            <IoCloseSharp onClick={close} className="cursor-pointer text-2xl absolute -top-5 right-0" />
+            <IoCloseSharp onClick={close} className="p-2 hover:border rounded cursor-pointer absolute text-5xl -top-12 right-0" />
 
             <ul className="w-full flex flex-col justify-start items-start  mt-6">
         {NAVLINKS.map((link:Navlink)=>{

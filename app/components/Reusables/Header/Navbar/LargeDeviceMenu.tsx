@@ -14,7 +14,7 @@ const LargeDeviceMenu = () => {
             <ul className="w-full flex  gap-6 justify-center items-center">
                 {NAVLINKS.map((link:Navlink)=>{
                   return  <li key={link.name}>
-                        <Link href={link.path} className={`${linkClass} + ${pathname === link.path ? activeClass : link.path === "/users/register"? specialClass  : ""}`}>
+                        <Link href={link.path} className={`${linkClass} + ${pathname === link.path && link.path !== "/users/register" ? activeClass : link.path === "/users/register"? specialClass  : ""}`}>
                             {link.name}
                         </Link>
                     </li>

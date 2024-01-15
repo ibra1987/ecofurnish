@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -13,6 +14,7 @@ const ListingCard = ({ imgSrc, title, description }: ListingCardType) => {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
+ if(typeof window !== "undefined"){
   const observer = new IntersectionObserver(
     (entries) => {
       if (entries[0].isIntersecting) {
@@ -23,7 +25,6 @@ const ListingCard = ({ imgSrc, title, description }: ListingCardType) => {
     },
     { threshold: 0.2 } // Adjust the threshold as needed
   );
-
   useEffect(() => {
     if (ref.current) {
       observer.observe(ref.current);
@@ -36,6 +37,9 @@ const ListingCard = ({ imgSrc, title, description }: ListingCardType) => {
     };
   }, []);
 
+ }
+
+ 
   return (
     <div
       ref={ref}

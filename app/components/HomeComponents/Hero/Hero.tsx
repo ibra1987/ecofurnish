@@ -6,7 +6,7 @@ import { useState } from "react";
 const Hero = () => {
     const [showModal,setShowModal]= useState(false)
   return (
-    <section className="w-full p-10 flex justify-between py-32  rounded-md bg-secondary">
+    <section className="w-full p-10 flex justify-between py-32  rounded-md  lg:w-10/12">
        {
         showModal &&  <SearchModal click={()=>setShowModal(false)}/>
        }

@@ -1,3 +1,4 @@
+
 import { FAKEITEMS } from "@/constants/FakeItems"
 import ListingCard, { ListingCardType } from "./ListingCard"
 
