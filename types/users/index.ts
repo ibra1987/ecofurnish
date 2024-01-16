@@ -8,6 +8,8 @@ export interface User {
    listings:string[]
 }
 
+export type LoggingUser = Pick<User, "email" | "password">
+
 
 export type NewUser  = Pick<User ,"fullName" | "email" | "password"> & {
     passwordConfirmation:string

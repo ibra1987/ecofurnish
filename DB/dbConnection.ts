@@ -15,7 +15,6 @@ const connection =async ()=>{
     try{
       
         const dbConnection = await client.connect()
-        console.log("connected")
         return dbConnection
        
 
@@ -25,4 +24,6 @@ const connection =async ()=>{
     }
 }
 
-export default connection
+const dbConnection =  connection()
+
+export default dbConnection

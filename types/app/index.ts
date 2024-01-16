@@ -9,3 +9,11 @@ export enum DatabaseTables {
      users,
      listings
 }
+
+export type FormFieldType = {
+    [key : string]:string
+}
+
+export type FormFieldErrorType = FormFieldType & {
+    error:string
+} 

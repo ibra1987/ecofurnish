@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/Reusables/Header/Header'
 import Footer from './components/Reusables/Footer'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <Toaster  position='top-center' toastOptions={{style:{
+        color:'white',
+        backgroundColor:"red"
+      }}}/>
+
         <Header/>
      <main >
      {children}

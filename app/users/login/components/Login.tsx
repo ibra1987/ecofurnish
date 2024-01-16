@@ -1,19 +1,23 @@
+"use client"
+import { loginAction } from "@/actions/users/Login";
 import FormInput from "@/app/components/Reusables/FormInput";
+import { LoggingUser } from "@/types/users";
 import Link from "next/link";
+import { useState } from "react";
+import { loginHandler } from "../handlers";
 
 const Login = () => {
+ 
   return (
-    <form className="min-h-screen w-full bg-primary flex justify-center pt-20 items-start">
+    <form action={loginHandler} className="min-h-screen w-full bg-primary flex justify-center pt-20 items-start">
       <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Log in to your account</h1>
 
          <FormInput
          containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
          type="email"
          name="email"
-         placeholder="Enter your email"
-         onChange={()=>{}}
+         placeholder="Enter your email" 
          cssClass="w-full rounded border p-2 outline-none focus:border-primary"
          label={{
           text:"Email:",
@@ -23,12 +27,10 @@ const Login = () => {
          
          />
         <FormInput
-        containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
+         containerClass="w-full flex flex-col justify-start items-start gap-3 "
          type="password"
          name="password"
          placeholder="Enter your password"
-         onChange={()=>{}}
          cssClass="w-full rounded border p-2 outline-none focus:border-primary"
          label={{
           text:"Password:",

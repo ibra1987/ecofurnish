@@ -6,11 +6,11 @@ import { ChangeEvent } from "react"
 type formInputsType = {
     containerClass?:string,
     type:string,
-    value:string,
+    value?:string,
     name:string,
     placeholder:string,
     cssClass:string,
-    onChange:(e:ChangeEvent)=>void
+    onChange?:(e:ChangeEvent)=>void
     label?:{
         text:string,
         htmlFor:string,
