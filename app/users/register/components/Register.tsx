@@ -1,15 +1,16 @@
 import FormInput from "@/app/components/Reusables/FormInput";
 import Link from "next/link";
+import { registerHandler } from "./handlers";
 
 const Register = () => {
   return (
-    <form className="min-h-screen w-full bg-primary flex justify-center pt-10 items-start">
+    <form action={registerHandler} className="min-h-screen w-full bg-primary flex justify-center pt-10 items-start">
       <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Create a free acount</h1>
           
          <FormInput
          containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
+         
          type="text"
          name="fullName"
          placeholder="Enter your full name"
@@ -24,7 +25,7 @@ const Register = () => {
          />
          <FormInput
          containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
+         
          type="fullName"
          name="email"
          placeholder="Enter your email"
@@ -39,7 +40,7 @@ const Register = () => {
          />
         <FormInput
         containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
+         
          type="password"
          name="password"
          placeholder="Enter your password"
@@ -53,7 +54,7 @@ const Register = () => {
          />
            <FormInput
         containerClass="w-full flex flex-col justify-start items-start gap-3 "
-         value=""
+         
          type="password"
          name="passwordConfirmation"
          placeholder="Confirm your password"

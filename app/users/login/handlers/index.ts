@@ -1,12 +1,16 @@
-import { loginAction } from "@/actions/users/Login";
-import toast from "react-hot-toast";
+"use client"
 
+import { loginAction } from "@/actions/users/Login";
+import { ServerActionResponse } from "@/types/app";
+import toast from "react-hot-toast";
 
 export async function loginHandler(formdata:FormData){
 
-    const response = await loginAction(formdata)
+    const response :ServerActionResponse = await loginAction(formdata)
 
-    if(response?.error){
-        toast.error(response?.error as string)
+    if(!response.success){
+      return  response.errors?.map((err:string)=>toast.error(err))
     }
+
+    console.log(response.data)
 }

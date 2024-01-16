@@ -6,9 +6,10 @@ import { CustomError } from "@/lib/CustomError";
 import { isEmail } from "@/lib/isEmail";
 import connection from "@/DB/dbConnection";
 import { ErrorFormatter } from "@/lib/ErrorFormater";
+import { ServerActionResponse } from "@/types/app";
 
 
-export  async function loginAction(formdata:FormData){
+export  async function loginAction(formdata:FormData):Promise<ServerActionResponse>{
    
    //
    try {
@@ -29,11 +30,11 @@ export  async function loginAction(formdata:FormData){
            password:passwordValue
         } ;
      
-    const {isError,errors} =  await isEmpty(userInfo)
-    if(isError){
+    // const {isError,errors} =  await isEmpty(userInfo)
+    // if(isError){
        
-      throw errors
-    }
+    //   throw errors
+    // }
    const isValidEmail = await isEmail(userInfo.email)
 
    if(!isValidEmail){
@@ -47,11 +48,18 @@ export  async function loginAction(formdata:FormData){
    if(!user){
     throw new CustomError("No such user in the database",404)
    }
-    
+    return {
+      success:true,
+      data:user
+    }
    } catch (error:unknown) {
    
       const handledError = ErrorFormatter(error)
-       return handledError
+
+       return {
+         success:false,
+         errors : handledError.error
+       }
 
 }
      

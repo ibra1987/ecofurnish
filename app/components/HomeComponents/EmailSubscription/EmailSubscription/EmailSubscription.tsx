@@ -1,6 +1,6 @@
 const EmailSubscription = () => {
   return (
-    <section className="h-96 bg-gradient-to-t from-yellow-600 to-yellow-400 w-full p-10 rounded">
+    <section className="h-96 bg-tertiary w-full p-10 rounded">
       <div className="w-full flex flex-col justify-start items-center">
         <h2 className="text-fourth font-bold text-4xl">
           Stay Updated with New Listings!

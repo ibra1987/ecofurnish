@@ -1,3 +1,4 @@
+import { CustomError } from "@/lib/CustomError"
 
 
 export type Navlink={
@@ -16,4 +17,10 @@ export type FormFieldType = {
 
 export type FormFieldErrorType = FormFieldType & {
     error:string
+}
+
+export  type ServerActionResponse = {
+    success:boolean,
+    errors?: string[],
+    data?:unknown
 } 
