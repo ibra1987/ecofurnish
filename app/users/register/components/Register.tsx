@@ -1,10 +1,16 @@
+
+"use client"
 import FormInput from "@/app/components/Reusables/FormInput";
 import Link from "next/link";
 import { registerHandler } from "./handlers";
+import { useRef } from "react";
 
 const Register = () => {
+const ref = useRef<HTMLFormElement>(null)
+
+
   return (
-    <form action={registerHandler} className="min-h-screen w-full bg-primary flex justify-center pt-10 items-start">
+    <form ref={ref} action={async(fromData)=> await registerHandler(fromData,ref)} className="min-h-screen w-full bg-primary flex justify-center pt-10 items-start">
       <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Create a free acount</h1>
           

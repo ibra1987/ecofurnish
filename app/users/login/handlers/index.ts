@@ -8,8 +8,9 @@ export async function loginHandler(formdata:FormData){
 
     const response :ServerActionResponse = await loginAction(formdata)
 
-    if(!response.success){
-      return  response.errors?.map((err:string)=>toast.error(err))
+    if(!response.success && response.errors &&  response.errors?.length>0){
+        const errorString = response.errors.join("-\n")
+        toast.error(errorString)
     }
 
     console.log(response.data)
