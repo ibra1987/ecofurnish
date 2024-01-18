@@ -16,10 +16,14 @@ export async function TokenGenerator(name:string,payload:string,time:string) : P
   return new Promise((resolve, reject) => {
     jwt.sign({ name: payload }, jwtSecret, { expiresIn: time }, (err, token) => {
       if (err) {
-        reject(err);
+        
+        reject({
+          success:false,
+          errors:[err.message]
+        });
       } else {
         resolve({
-            success:false,
+            success:true,
             data:token
 
         });

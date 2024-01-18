@@ -3,13 +3,13 @@ import { loginAction } from "@/actions/users/Login";
 import FormInput from "@/app/components/Reusables/FormInput";
 import { LoggingUser } from "@/types/users";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { loginHandler } from "../handlers";
 
 const Login = () => {
- 
+ const ref = useRef(null)
   return (
-    <form action={loginHandler} className="min-h-screen w-full bg-primary flex justify-center pt-20 items-start">
+    <form ref={ref} action={(formData)=>loginHandler(formData,ref)} className="min-h-screen w-full bg-primary flex justify-center pt-20 items-start">
       <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Log in to your account</h1>
 
