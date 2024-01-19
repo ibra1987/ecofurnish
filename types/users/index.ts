@@ -15,6 +15,8 @@ export type NewUser  = Pick<User ,"fullName" | "email" | "password"> & {
     passwordConfirmation:string
 }
 
+export type LoggedInUser = Pick <User,"email" |"id" | "listings" | "fullName">
+
 
 export type EmailMessageType ={
     to: string,

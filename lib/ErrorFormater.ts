@@ -6,6 +6,12 @@ interface FormFieldErrorArray extends Array<FormFieldErrorType> {}
 export function ErrorFormatter(error: unknown) {
   // if errors is instance of built-in Error
 
+  if(error && typeof error === "object"  && "errors" in error && "success" in error && Array.isArray(error.errors)   ){
+    return {
+      error:error?.errors.length>0 && error.errors[0] ,
+      code:400
+    }
+  }
   if(error instanceof CustomError){
     return {
       error:[error.message],

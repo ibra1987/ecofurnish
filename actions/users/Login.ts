@@ -59,7 +59,7 @@ export  async function loginAction(formdata:FormData):Promise<ServerActionRespon
 
    const {password,..._user} =user
 
-   const result = await TokenGenerator("_id",user._id.toString(),"1h")
+   const result = await TokenGenerator("_id",user._id.toString(),"1min")
    // CHECK IF TOKEN HAS NOY BEEN GENERATED
    if(!result.success && result.errors && result.errors.length>0){
      
@@ -67,7 +67,7 @@ export  async function loginAction(formdata:FormData):Promise<ServerActionRespon
    }
    cookies().set({
       name: 'sessId',
-      value: result.data as string,
+      value: result?.data?._id as string,
       httpOnly: true,
      
     })
@@ -76,7 +76,7 @@ export  async function loginAction(formdata:FormData):Promise<ServerActionRespon
       success:true,
       data:{
          user:_user,
-         token:result.data as string
+         token:result?.data?._id as string
       }
     }
    } catch (error:unknown) {

@@ -22,5 +22,7 @@ export type FormFieldErrorType = FormFieldType & {
 export  type ServerActionResponse = {
     success:boolean,
     errors?: string[],
-    data?:unknown
+    data?:{
+        [key: string]: string | Object
+    }
 } 

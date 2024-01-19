@@ -10,7 +10,7 @@ export async function isEmpty(fields:FormFieldType) {
             errors.push({
                 name:key,
                 value:fields[key],
-                error:`${fields[key]} can not be blank.`
+                error:`${key} can not be blank.`
             }) 
         }
     })
