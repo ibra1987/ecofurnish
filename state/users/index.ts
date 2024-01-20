@@ -7,6 +7,7 @@ import { LoggedInUser } from "@/types/users"
 
 const _user :LoggedInUser ={
     id:"",
+    fullName:"",
     email:"",
     listings:[]
 }
