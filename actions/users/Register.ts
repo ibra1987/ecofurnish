@@ -141,6 +141,10 @@ export async function registerAction(formdata: FormData):Promise<ServerActionRes
     // RETURN A RESPONSE 
     return {
       success:true,
+      data:{
+        message:"Account created successfully. Check your email for validation link."
+
+      }
     }
   } catch (error: unknown) {
     const handledError = ErrorFormatter(error);

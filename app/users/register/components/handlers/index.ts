@@ -67,6 +67,6 @@ export async function registerHandler(formdata:FormData,ref:RefObject<HTMLFormEl
         return  response.errors?.map((err:string)=>toast.error(err))
       }
       
-    toast.success(response.data as string)
+    toast.success(response?.data?.message as string)
     ref.current?.reset()
 }
