@@ -4,14 +4,14 @@ import Image from "next/image"
 const Testimonial = () => {
    
   return (
-<div  className="w-full flex flex-col justify-start items-center  p-4 rounded bg-primary text-secondary">
+<div  className="w-full justify-self-center flex flex-col justify-start items-center  p-2 rounded bg-white text-black">
     <div className="px-6 w-full flex justify-start items-center ">
     <div className=" relative w-[120px] h-[120px] rounded-full p-2 border border-yellow-400">
         <Image className="rounded-full" alt="man_testimonial" src={"/images/man.jpg"} fill={true}/>
     </div>
    <div className="mx-2 flex flex-col justify-start items-center">
    <h3 className=" ">John Doe</h3>
-    <Image src="/images/5stars.png" alt="5 stars rating" width={60}  height={30}/>
+    <Image src="/images/5stars.png" alt="5 stars rating" width={40}  height={30}/>
    </div>
     </div>
 

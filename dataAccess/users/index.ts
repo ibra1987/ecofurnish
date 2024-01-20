@@ -1,4 +1,4 @@
-import { LoggedInUser } from "@/types/users";
+import { LoggedInUser, NewUser, User } from "@/types/users";
 import connection  from "@/DB/dbConnection"
 import { CustomError } from "@/lib/CustomError";
 import { ObjectId } from "mongodb";
@@ -10,7 +10,6 @@ export async function getUserById(id:string | ObjectId):Promise<LoggedInUser | u
         return  ;
     }
 try {
-  console.log(id)
     const client = await connection
 
     if(!client){
@@ -34,4 +33,61 @@ try {
 } catch (error) {
     throw error
 }
+}
+
+
+// FIND A USER BY EMAIL 
+
+
+export async function getUserByEmail(emailString:string):Promise<User | undefined>{
+
+    if(!emailString|| typeof emailString !== "string" ){
+        return  ;
+    }
+try {
+    const client = await connection
+
+    if(!client){
+        throw new CustomError("Network error, could not connect to the database",500)
+    }
+    
+    const user  = await client
+    .db("startUp")
+    .collection("users").findOne({email:emailString})
+
+    if(!user) throw new CustomError("No such user in the database",404)
+    
+    const {_id,email,listings,fullName,password}= user
+
+    return {
+        id:_id.toString(),
+        email,
+        listings,
+        fullName,
+        password
+    }
+} catch (error) {
+    throw error
+}
+}
+
+// INSERT A NEW USER
+
+
+
+export async function createUser(user:NewUser):Promise<LoggedInUser | undefined>{
+
+       if(!user) return 
+    try {
+        const client = await connection
+        if(!client)    throw new CustomError("Network error, could not connect to the database",500)
+ 
+        const result = await client
+        .db("startUp")
+        .collection("users")
+        .insertOne(user);
+    } catch (error) {
+        throw error
+    }
+
 }

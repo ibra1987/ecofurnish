@@ -6,14 +6,16 @@ import SmallDeviceMenu from "./Navbar/SmallDeviceMenu";
 //
 const Header = () => {
   return (
-    <header className="w-full  lg:w-10/12 mx-auto flex flex-col justify-between items-start lg:flex-row lg:items-center  p-2 lg:p-6 ">
-      <Logo />
+    <header className="w-full   bg-secondary text-white   p-2 lg:p-6 ">
+     <div className="w-full lg:w-10/12 mx-auto flex flex-col justify-between items-start lg:flex-row lg:items-center">
+     <Logo />
       <div className="w-full lg:w-1/2 flex items-center justify-end">
        
         <LargeDeviceMenu />
         <SmallDeviceMenu/>
         
       </div>
+     </div>
     </header>
   );
 };

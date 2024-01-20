@@ -1,11 +1,11 @@
 const EmailSubscription = () => {
   return (
-    <section className="h-96 bg-tertiary w-full p-10 rounded">
+    <section className=" bg-tertiary w-full p-10 rounded">
       <div className="w-full flex flex-col justify-start items-center">
-        <h2 className="text-fourth font-bold text-4xl">
+        <h2 className="text-fourth w-full text-center font-bold text-4xl">
           Stay Updated with New Listings!
         </h2>
-        <p className="w-full lg:w-3/5 text-gray-100 p-6 indent-2">
+        <p className="w-full lg:w-3/5 text-gray-100 p-2 lg:p-6 indent-2">
           Subscribe to our notification service, and we&apos;ll keep you informed
           whenever a new item matching your interests is listed on our
           marketplace.

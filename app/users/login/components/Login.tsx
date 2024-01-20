@@ -9,8 +9,8 @@ import { loginHandler } from "../handlers";
 const Login = () => {
  const ref = useRef(null)
   return (
-    <form ref={ref} action={(formData)=>loginHandler(formData,ref)} className="min-h-screen w-full bg-primary flex justify-center pt-20 items-start">
-      <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
+    <form ref={ref} action={(formData)=>loginHandler(formData,ref)} className="min-h-screen w-full  flex justify-center pt-20 items-start ">
+      <div className=" w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3 border">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Log in to your account</h1>
 
          <FormInput
@@ -39,7 +39,7 @@ const Login = () => {
          }}
          />
         <div className="w-full flex flex-col justify-start items-start gap-3 ">
-          <button className="w-full font-medium text-secondary rounded bg-fourth hover:bg-red-950 p-2 outline-none ">
+          <button className="w-full font-medium bg-tertiary rounded text-fourth hover:bg-black p-2 outline-none ">
             Sign In
           </button>
         </div>

@@ -9,6 +9,7 @@ import { ErrorFormatter } from "@/lib/ErrorFormater";
 import { ServerActionResponse } from "@/types/app";
 import { TokenGenerator } from "@/lib/TokenGenerator";
 import bcrypt from "bcrypt"
+import { getUserByEmail } from "@/dataAccess/users";
 
 
 export  async function loginAction(formdata:FormData):Promise<ServerActionResponse>{
@@ -43,9 +44,8 @@ export  async function loginAction(formdata:FormData):Promise<ServerActionRespon
     throw new CustomError("Please check your email address",400)
    }
 
-   const client =await connection
 
-   const user =  await client?.db("startUp").collection("users").findOne({email:userInfo.email})
+   const user =  await getUserByEmail(userInfo.email)
 
    if(!user){
     throw new CustomError("No such user in the database",404)
@@ -59,7 +59,7 @@ export  async function loginAction(formdata:FormData):Promise<ServerActionRespon
 
    const {password,..._user} =user
 
-   const result = await TokenGenerator("_id",user._id.toString(),"1min")
+   const result = await TokenGenerator("_id",user.id.toString(),"1min")
    // CHECK IF TOKEN HAS NOY BEEN GENERATED
    if(!result.success && result.errors && result.errors.length>0){
      

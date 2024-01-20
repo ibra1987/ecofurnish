@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* div{
-  background-color: #69382e;
-} */
+
 
 .fadeIn{
   animation: fadeIn .7s ease-in forwards;
@@ -47,7 +45,7 @@
 }
 
 .expanded {
-  padding: 40px;
+ 
   max-height: 500px; /* Set max-height to a larger value when expanded */
   opacity: 1; /* Set opacity to 1 when expanded */
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out,padding 0.5s ease-in-out; /* Include the transition property for max-height and opacity */

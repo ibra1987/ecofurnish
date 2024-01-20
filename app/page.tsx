@@ -8,13 +8,11 @@ import LatestListings from "./components/HomeComponents/latestListings/LatestLis
 export default function Home() {
   return (
     <main className="flex  mx-auto min-h-screen flex-col items-center justify-between w-full ">
-      <div className="w-full bg-secondary flex justify-center">
+      <div className="w-full bg-secondary flex justify-center items-center">
         <Hero />
       </div>
-      <div className="w-full flex flex-col items-center lg:w-10/12">
         <LatestListings />
         <Testimonials />
-      </div>
 
       <Faqs />
       <EmailSubscription />

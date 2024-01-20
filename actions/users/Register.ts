@@ -10,6 +10,7 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcrypt"
 import { TokenGenerator } from "@/lib/TokenGenerator";
 import { EmailSender } from "@/lib/EmailSender";
+import { getUserByEmail } from "@/dataAccess/users";
 
 
 //SETUP
@@ -81,10 +82,7 @@ export async function registerAction(formdata: FormData):Promise<ServerActionRes
     const { passwordConfirmation, ...newUser } = userInfo;
 
     //CHECK IF USER ALREADY EXISTS
-    const _user = await client
-    .db("startUp")
-    .collection("users")
-    .findOne({email:newUser.email})
+    const _user = await getUserByEmail(newUser.email)
 
     if(_user){
       throw new CustomError("user already exists, try log in",400)
@@ -143,7 +141,6 @@ export async function registerAction(formdata: FormData):Promise<ServerActionRes
     // RETURN A RESPONSE 
     return {
       success:true,
-      data:"account created successfull, please check your email and activate your account."
     }
   } catch (error: unknown) {
     const handledError = ErrorFormatter(error);

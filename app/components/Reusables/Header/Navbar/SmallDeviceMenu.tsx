@@ -13,7 +13,7 @@ const [showMenu,setShowMenu]=useState(false)
 
 
   return (
-    <nav className="w-full   flex lg:hidden relative ">
+    <nav className="w-full pl-4 bg-white  flex lg:hidden relative ">
 {   showMenu ? navBar({close:()=>setShowMenu(false)}) : <RxHamburgerMenu className='p-2 hover:border rounded cursor-pointer absolute text-5xl -top-12 right-0' onClick={()=>setShowMenu(true)}/>
 }
   </nav>
@@ -33,7 +33,7 @@ function navBar({close}:{close:()=>void}){
             <ul className="w-full flex flex-col justify-start items-start  mt-6">
         {NAVLINKS.map((link:Navlink)=>{
           return  <li className='w-full' key={link.name}>
-                <Link className='hover:bg-blue-500 hover:text-white flex w-full p-3 px-2' href={link.path}>
+                <Link className='hover:bg-primary hover:text-white flex w-full p-3 px-2' href={link.path}>
                     {link.name}
                 </Link>
             </li>
