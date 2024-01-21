@@ -11,13 +11,11 @@ export async function EmailSender(msg:EmailMessageType){
 
     try {
       await sgMail.send(msg)
-      console.log("email send")
       return true
 
     
         
     } catch (error:any) {
-         console.log(error.message)
          return false
         //    throw [ "could not send verification email"]
         

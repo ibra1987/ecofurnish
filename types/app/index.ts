@@ -3,7 +3,8 @@ import { CustomError } from "@/lib/CustomError"
 
 export type Navlink={
     name:string,
-    path:string
+    path:string,
+    protected:boolean
 }
 
 export enum DatabaseTables {

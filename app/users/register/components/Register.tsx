@@ -10,8 +10,8 @@ const ref = useRef<HTMLFormElement>(null)
 
 
   return (
-    <form ref={ref} action={async(fromData)=> await registerHandler(fromData,ref)} className="min-h-screen w-full bg-primary flex justify-center pt-10 items-start">
-      <div className="bg-secondary w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start rounded gap-3">
+    <form ref={ref} action={async(fromData)=> await registerHandler(fromData,ref)} className="min-h-screen bg-gray-50 w-full  border rounded flex justify-center pt-10 items-start">
+      <div className="border bg-white shadow-md rounded w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start  gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Create a free acount</h1>
           
          <FormInput
@@ -21,7 +21,7 @@ const ref = useRef<HTMLFormElement>(null)
          name="fullName"
          placeholder="Enter your full name"
          onChange={()=>{}}
-         cssClass="w-full rounded border p-2 outline-none focus:border-primary"
+         cssClass="w-full rounded border border-gray-400 p-2 outline-none focus:border-secondary"
          label={{
           text:"full name:",
           cssClass:"text-gray-700",
@@ -36,7 +36,7 @@ const ref = useRef<HTMLFormElement>(null)
          name="email"
          placeholder="Enter your email"
          onChange={()=>{}}
-         cssClass="w-full rounded border p-2 outline-none focus:border-primary"
+         cssClass="w-full rounded border border-gray-400 p-2 outline-none focus:border-secondary"
          label={{
           text:"Email:",
           cssClass:"text-gray-700",
@@ -51,7 +51,7 @@ const ref = useRef<HTMLFormElement>(null)
          name="password"
          placeholder="Enter your password"
          onChange={()=>{}}
-         cssClass="w-full rounded border p-2 outline-none focus:border-primary"
+         cssClass="w-full rounded border border-gray-400 p-2 outline-none focus:border-secondary"
          label={{
           text:"Password:",
           cssClass:"text-gray-700",
@@ -65,7 +65,7 @@ const ref = useRef<HTMLFormElement>(null)
          name="passwordConfirmation"
          placeholder="Confirm your password"
          onChange={()=>{}}
-         cssClass="w-full rounded border p-2 outline-none focus:border-primary"
+         cssClass="w-full rounded border border-gray-400 p-2 outline-none focus:border-secondary"
          label={{
           text:"Password Confirmation:",
           cssClass:"text-gray-700",
@@ -73,7 +73,7 @@ const ref = useRef<HTMLFormElement>(null)
          }}
          />
         <div className="w-full flex flex-col justify-start items-start gap-3 ">
-          <button className="w-full font-medium text-secondary rounded bg-fourth hover:bg-red-950 p-2 outline-none ">
+          <button className="w-full font-medium text-fourth rounded bg-primary hover:bg-red-950 p-2 outline-none ">
             Sign In
           </button>
         </div>

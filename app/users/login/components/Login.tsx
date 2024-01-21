@@ -5,8 +5,10 @@ import { LoggingUser } from "@/types/users";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { loginHandler } from "../handlers";
-
+import {  useFormStatus } from "react-dom";
+import Button from "@/app/components/Reusables/Button";
 const Login = () => {
+  const {pending} = useFormStatus()
  const ref = useRef(null)
   return (
     <form ref={ref} action={(formData)=>loginHandler(formData,ref)} className="min-h-screen w-full  flex justify-center pt-20 items-start ">
@@ -39,9 +41,8 @@ const Login = () => {
          }}
          />
         <div className="w-full flex flex-col justify-start items-start gap-3 ">
-          <button className="w-full font-medium bg-tertiary rounded text-fourth hover:bg-black p-2 outline-none ">
-            Sign In
-          </button>
+          <Button text={"Sign In"} cssClass="w-full font-medium bg-tertiary rounded text-fourth hover:bg-black p-2 outline-none "/>
+         
         </div>
        <div className="flex flex-col justify-start items-start">
        <Link className="text-primary" href={"/users/reset-password"}>

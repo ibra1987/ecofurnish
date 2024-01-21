@@ -12,8 +12,9 @@ import { Navigate } from "@/actions/app/Navigate";
 import { loginAction } from "@/actions/users/Login";
 import { isEmail } from "@/lib/isEmail";
 import { isEmpty } from "@/lib/isEmpty";
+import userState from "@/state/users";
 import { ServerActionResponse } from "@/types/app";
-import { LoggingUser } from "@/types/users";
+import { LoggedInUser, LoggingUser } from "@/types/users";
 import { RefObject } from "react";
 import toast from "react-hot-toast";
 
@@ -75,10 +76,5 @@ export async function loginHandler(
   }
 //IF NO ERRORS WE RESET THE FORM FIELDS AND REDIRECT TO DASHBOARD
   ref.current?.reset();
-  localStorage.setItem('user',JSON.stringify({
-    id:"h",
-    email:"f",
-    lintings:[]
-  }))
   Navigate('/app/dashboard?referrer=loginform')
 }

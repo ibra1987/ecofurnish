@@ -4,18 +4,29 @@ import { Navlink } from "@/types/app";
 export const NAVLINKS:Navlink[] = [
     {
         name:"Home",
-        path:"/"
+        path:"/",
+        protected:false
+        
     },
     {
         name:"Sell your furniture",
-        path:"/app/add-listing"
+        path:"/app/add-listing",
+        protected:false
     },
     {
         name:"Login",
-        path:"/users/login"
+        path:"/users/login",
+        protected:false,
     },
     {
         name:"Register",
-        path:"/users/register"
-    }
+        path:"/users/register",
+        protected:false
+    },
+    {
+        name:"dashboard",
+        path:"/app/dashboard",
+        protected:true
+    },
+    
 ]

@@ -1,10 +1,9 @@
-
+'use server'
 import { cookies } from "next/headers"
 
 
 export async function SetCookie(name:string,value:string) {
-"use server"
-    cookies().set({
+      cookies().set({
         name,
         value,
         httpOnly: true,

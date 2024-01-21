@@ -1,37 +1,33 @@
-"use client"
+"use client";
 
-import { LoggedInUser } from "@/types/users"
+import { LoggedInUser } from "@/types/users";
 
-
-
-
-const _user :LoggedInUser ={
-    id:"",
-    fullName:"",
-    email:"",
-    listings:[]
+type  UserStateType = {
+    state:()=>LoggedInUser,
+    reset:()=>void,
+    setUser:(user:LoggedInUser)=>void
 }
+ 
 
+const userState :UserStateType = {
+    state :()=> ({
+        id: "",
+        fullName: "",
+        email: "",
+        listings: [],
+        navlinks:[]
+      }),
+      reset:()=>{
+        userState.state =()=> ({
+            id: "",
+            fullName: "",
+            email: "",
+            listings: [],
+        })
+      },
+      setUser:(user:LoggedInUser)=>{
+        userState.state =()=> ({...userState.state ,...user})
+      }
+};
 
-const userState ={
-
-    initialState: ()=>{
-        if(typeof window !== "undefined"){
-            return localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")! ) as LoggedInUser :_user 
-        }
-    },
-    setUser:(userInfo:LoggedInUser)=>{
-        localStorage.setItem("user",JSON.stringify(userInfo))
-        userState.initialState=()=> userInfo
-    },
-    logOut:()=>{
-        localStorage.removeItem("user")
-        userState.initialState =()=> _user;
-    }
-
-}
-
-export default userState
-
-
-
+export default userState;

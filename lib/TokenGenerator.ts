@@ -1,4 +1,4 @@
-
+'use server'
 import { ServerActionResponse } from "@/types/app";
 import jwt from "jsonwebtoken"
 
@@ -18,7 +18,6 @@ export async function TokenGenerator(name:string,payload:string,time:string) : P
 
     jwt.sign(jwtPayload,jwtSecret, { expiresIn: time }, (err, token) => {
       if (err) {
-        
         reject({
           success:false,
           errors:[err.message]
@@ -27,7 +26,7 @@ export async function TokenGenerator(name:string,payload:string,time:string) : P
         resolve({
             success:true,
             data:{
-              _id:token! as string
+              token:token! as string
             }
 
         });
