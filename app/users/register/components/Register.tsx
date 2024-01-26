@@ -4,13 +4,14 @@ import FormInput from "@/app/components/Reusables/FormInput";
 import Link from "next/link";
 import { registerHandler } from "./handlers";
 import { useRef } from "react";
+import Button from "@/app/components/Reusables/Button";
 
 const Register = () => {
 const ref = useRef<HTMLFormElement>(null)
 
 
   return (
-    <form ref={ref} action={async(fromData)=> await registerHandler(fromData,ref)} className="min-h-screen bg-gray-50 w-full  border rounded flex justify-center pt-10 items-start">
+    <form ref={ref} action={async(fromData)=> await registerHandler(fromData,ref)} className="min-h-screen  w-full  border rounded flex justify-center pt-10 items-start">
       <div className="border bg-white shadow-md rounded w-11/12 lg:w-2/5 p-6 flex flex-col justify-start items-start  gap-3">
          <h1 className="w-full text-center m-4 text-3xl font-bold text-gray-700">Create a free acount</h1>
           
@@ -73,9 +74,8 @@ const ref = useRef<HTMLFormElement>(null)
          }}
          />
         <div className="w-full flex flex-col justify-start items-start gap-3 ">
-          <button className="w-full font-medium text-fourth rounded bg-primary hover:bg-red-950 p-2 outline-none ">
-            Sign In
-          </button>
+          <Button type="submit" text="Sign in" cssClass="w-full font-medium text-fourth rounded bg-primary hover:bg-red-950 p-2 outline-none " />
+           
         </div>
        <div className="flex flex-col justify-start items-start">
        <Link className="text-primary" href={"/users/login"}>

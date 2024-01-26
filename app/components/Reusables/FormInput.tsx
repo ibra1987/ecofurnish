@@ -32,8 +32,10 @@ type,value,placeholder,cssClass,label,name,onChange,containerClass
     placeholder={placeholder}
     value={value}
     className={cssClass}
-    />
     
+    
+    />
+  
 </div>
   )
 }

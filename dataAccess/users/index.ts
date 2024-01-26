@@ -2,6 +2,7 @@ import { LoggedInUser, NewUser, User } from "@/types/users";
 import connection  from "@/DB/dbConnection"
 import { CustomError } from "@/lib/CustomError";
 import { ObjectId } from "mongodb";
+import { ServerActionResponse } from "@/types/app";
 
 
 export async function getUserById(id:string | ObjectId):Promise<LoggedInUser | undefined>{
@@ -10,7 +11,7 @@ export async function getUserById(id:string | ObjectId):Promise<LoggedInUser | u
         return  ;
     }
 try {
-    const client = await connection
+    const client = await connection()
 
     if(!client){
         throw new CustomError("Network error, could not connect to the database",500)
@@ -45,7 +46,7 @@ export async function getUserByEmail(emailString:string):Promise<User | undefine
         return  ;
     }
 try {
-    const client = await connection
+    const client = await connection()
 
     if(!client){
         throw new CustomError("Network error, could not connect to the database",500)
@@ -75,17 +76,29 @@ try {
 
 
 
-export async function createUser(user:NewUser):Promise<LoggedInUser | undefined>{
+export async function createUser(user:NewUser):Promise<ServerActionResponse | undefined>{
 
        if(!user) return 
     try {
-        const client = await connection
+        const client = await connection()
         if(!client)    throw new CustomError("Network error, could not connect to the database",500)
  
         const result = await client
         .db("startUp")
         .collection("users")
         .insertOne(user);
+    if(!result.insertedId){
+        return {
+            success:false
+        }
+    }
+
+    return {
+        success:true,
+        data:{
+            user:result.insertedId
+        }
+    }
     } catch (error) {
         throw error
     }

@@ -7,15 +7,15 @@ import SearchForm from "../SearchComponent/SearchForm";
 const Hero = () => {
     const [showModal,setShowModal]= useState(false)
   return (
-    <section className="w-full py-10  lg:p-10 flex justify-center  rounded-md  lg:w-10/12">
+    <section className="w-full  flex justify-center  rounded-md py-24  lg:w-10/12">
        {
         showModal &&  <SearchModal click={()=>setShowModal(false)}/>
        }
       <div className="w-full flex flex-col justify-center items-center ">
-        <h1 className="w-full text-5xl lg:text-6xl xl:text-7xl text-center  font-extrabold text-tertiary ">
+        <h1 className="w-full text-5xl lg:text-6xl xl:text-7xl text-center  font-extrabold text-yellow-100 ">
            Affordable Used Furniture
         </h1>
-        <p className="w-10/12  text-gray-700 p-1 py-4 text-sm md:text-base lg:p-6">
+        <p className="w-10/12 lg:w-2/3  text-gray-600 p-1 py-4 text-sm md:text-base lg:p-6">
           Discover affordable style with EcoFurnish, your destination for
           quality used furniture. Buy and sell effortlessly, giving pre-loved
           pieces a second chance.

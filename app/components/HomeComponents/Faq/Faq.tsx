@@ -7,7 +7,7 @@ const Faq = ({faq}:{faq:FaqType}) => {
     const [expanded,setExpanded]=useState(false)
   return (
     <div className="w-full lg:w-3/5 flex flex-col justify-start items-start text-tertiary p-2">
-      <h2 onClick={()=>setExpanded(!expanded)} className="w-full flex justify-between border border-b-gray-400 rounded cursor-pointer  hover:text-white hover:bg-secondary  font-medium text-xl p-4">
+      <h2 onClick={()=>setExpanded(!expanded)} className="w-full flex justify-between border-b border-b-gray-400  cursor-pointer  hover:text-white hover:bg-secondary  font-medium text-xl p-4">
         <span>
         {faq.question}
         </span>

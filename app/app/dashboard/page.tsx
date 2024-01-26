@@ -13,11 +13,13 @@ if(!res.success) redirect("/users/login")
 
 
     return (
-    <main>
-       
-        <UserDashboard user={res.data?.user}/>
+    <main className="w-full flex min-h-screen ">
+       <div className="w-full h-full">
+      
+          <UserDashboard user={res.data?.user}/>
+
+       </div>
        
     </main>
   )
 }
-
