@@ -1,11 +1,13 @@
+import { ImageAsset, Slug } from "sanity";
 
 
 export interface Listing {
-    id:string,
+    _id:string,
     user:string,
     title:string,
     description:string,
     price:number,
     publishedAt:Date,
-    images:string[]
+    slug:Slug,
+    images:ImageAsset[]
 }

@@ -37,7 +37,7 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published At',
-      type: 'datetime',
+      type: 'date',
     },
     // New fields for image gallery
     {

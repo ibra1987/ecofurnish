@@ -6,13 +6,11 @@ import { LoggedInUser } from "@/types/users"
 import DashboardPannel from "./DashboardPannel"
 
 
-export function UserDashboard({user}:{user:LoggedInUser}) {
+export function UserDashboard() {
 
-if(!user) return <div>...loading</div>
-userState.setUser(user)
+
   return (
-    <div className="w-full flex justify-center items-start my-6">
-        <DashboardPannel/>
+    <div className="w-full flex justify-center items-start ">
         <div className="w-full lg:w-3/4
         
         ">

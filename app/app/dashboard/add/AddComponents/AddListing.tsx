@@ -1,7 +1,7 @@
 "use client"
 
 import FormInput from "@/app/components/Reusables/FormInput"
-import { RichTextEditor } from "./RichTextEditor"
+import { RichTextEditor } from "../../dashboardComponents/RichTextEditor"
 import { useRef, useState } from "react"
 import Button from "@/app/components/Reusables/Button"
 
@@ -13,7 +13,7 @@ export default function AddListing() {
 
 
   return (
-        <form onClick={(e)=>e.stopPropagation()} className="w-full lg:w-2/4 p-3 bg-white">
+        <form onClick={(e)=>e.stopPropagation()} className="flex-1 bg-white">
           <h2 className="text-4xl font-bold w-full text-center my-5">Add a new listing</h2>
           <FormInput
           type="text"
