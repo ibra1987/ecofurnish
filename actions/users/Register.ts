@@ -71,7 +71,7 @@ export async function registerAction(formdata: FormData):Promise<ServerActionRes
     }
 
     //CONNECT TO DB
-    const client = await connection;
+    const client = await connection();
 
     // CHECK IF DB CONNECTION FAILED
     if(!client){
