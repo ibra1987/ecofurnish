@@ -17,4 +17,4 @@ const RichTextEditor = dynamic(
 ) as typeof ReactQuill;
 RichTextEditor.displayName = "RichTextEditor";
 
-export default{ RichTextEditor };
+export default RichTextEditor ;
