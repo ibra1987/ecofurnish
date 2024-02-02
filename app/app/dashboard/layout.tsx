@@ -21,8 +21,8 @@ export default async function RootLayout({
   
   const sessId = cookies().get("sessId")
   if(!sessId) redirect("/users/login")
-const res = await fetchUser(sessId.value as string)
-if(!res.success) redirect("/users/login")
+const session = await fetchUser(sessId.value as string)
+if(!session.success) redirect("/users/login")
 
   return (
  
@@ -38,7 +38,7 @@ if(!res.success) redirect("/users/login")
         />
 
         <main className="w-full lg:w-10/12 mx-auto  flex   justify-center items-start my-6">
-            <DashboardPannel/>
+            <DashboardPannel session={session} />
             
                 {children}
         </main>

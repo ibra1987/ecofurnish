@@ -1,14 +1,13 @@
 "use client";
 import userState from "@/state/users";
 import { useState } from "react";
+import {ServerActionResponse}  from "@/types/app/index"
 import Link from "next/link";
+import { LoggedInUser } from "@/types/users";
 
-
-export function DashboardPannel() {
-
+export function DashboardPannel({session}:{session:ServerActionResponse | undefined}) {
+  userState.setUser(session?.data?.user as LoggedInUser)
  
-  const [show, setShow] = useState(false);
-
   const user = userState.state();
 
   return (
@@ -18,7 +17,7 @@ export function DashboardPannel() {
         Welcome back {user.fullName.toLocaleUpperCase()}
       </span>
       <Link
-        className="flex justify-center rounded w-full text-white bg-gray-800 hover:bg-gray-700 transition duration-100 p-2"
+        className="flex justify-center rounded w-full text-white bg-primary hover:bg-gray-700 transition duration-100 p-2"
         href={"/app/dashboard/add"}
       >
         Add New listing

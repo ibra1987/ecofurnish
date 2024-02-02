@@ -16,10 +16,11 @@ type formInputsType = {
         htmlFor:string,
         cssClass:string
     }
+    allowMultiple?:boolean
 }
 
 const FormInput = ({
-type,value,placeholder,cssClass,label,name,onChange,containerClass
+type,value,placeholder,cssClass,label,name,onChange,containerClass,allowMultiple
 }:formInputsType) => {
   return (
     <div className={containerClass}>
@@ -32,6 +33,7 @@ type,value,placeholder,cssClass,label,name,onChange,containerClass
     placeholder={placeholder}
     value={value}
     className={cssClass}
+    multiple={allowMultiple}
     
     
     />

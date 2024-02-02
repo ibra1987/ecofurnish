@@ -6,6 +6,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { createClient } from "@sanity/client";
 import { apiVersion, dataset, projectId, useCdn } from "../../../sanity/env";
 import {Eye} from "lucide-react"
+import userState from "@/state/users";
 const myConfiguredSanityClient = createClient({
   apiVersion,
   dataset,
@@ -21,6 +22,7 @@ function urlFor(source: SanityImageSource) {
 }
 
 function SingleListingCard({ listing }: { listing: Listing }) {
+// if(userId !== listing.user)  return<></>
   return (
   <>
     <li

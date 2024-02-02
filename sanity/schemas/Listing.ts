@@ -1,3 +1,5 @@
+import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories";
+import { LISTING_CONITION } from "@/constants/ListingCondition";
 
 export default {
   name: 'listing',
@@ -34,6 +36,30 @@ export default {
       title: 'Price',
       type: 'number',
     },
+    {
+      name:"category",
+      title:"Category",
+      type:"string",
+      options:{
+        list:Object.keys(LISTINGS_CATEGORIES)
+      }
+    },
+    {
+      name:"subCargeory",
+      title:"Subcategory",
+      type:"string"
+    },
+    {
+      name:"condition",
+      title:"Condition",
+      type:'string',
+       
+        options:{
+          list:LISTING_CONITION
+        }
+       
+    },
+    
     {
       name: 'publishedAt',
       title: 'Published At',

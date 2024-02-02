@@ -1,16 +1,19 @@
 "use client"
 
 import dynamic from 'next/dynamic';
+import { forwardRef } from 'react';
+import ReactQuill, { ReactQuillProps } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import ReactQuill from 'react-quill';
 
-export const RichTextEditor= dynamic(
+const RichTextEditor = dynamic(
   async () => {
     const { default: RQ } = await import('react-quill');
-    // eslint-disable-next-line react/display-name
-    return ({ ...props }) => <RQ {...props}  />;
+    // Forward the ref with the correct type
+    return forwardRef<ReactQuill, ReactQuillProps>((props, ref) => <RQ ref={ref} {...props} />);
   },
   {
     ssr: false,
   }
 ) as typeof ReactQuill;
+
+export { RichTextEditor };

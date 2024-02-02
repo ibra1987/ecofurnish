@@ -12,8 +12,12 @@ import ListingsFilters from "./ListingsFilters";
 export default async function page() {
   const listings =
     (await client.fetch(`*[_type == "listing"] | order(publishedAt){
-      _id,
-      slug,
+    _id,
+    slug,
+    user,
+    condition,
+    category,
+    subCategory,
     title,
     description,
     price,

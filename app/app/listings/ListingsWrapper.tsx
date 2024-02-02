@@ -2,9 +2,11 @@ import { Listing } from "@/types/listing";
 import BlockContent from "@sanity/block-content-to-react"; // Import BlockContent
 import Link from "next/link";
 import SingleListingCard from "./SingleListingCard";
+import userState from "@/state/users";
 
 function ListingsWrapper({ listings }: { listings: Listing[] }) {
-  console.log(listings[0].slug.current)
+
+
   return (
     <section className="w-full ">
  
