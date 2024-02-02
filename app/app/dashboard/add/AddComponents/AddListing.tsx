@@ -1,7 +1,7 @@
 "use client"
 
 import FormInput from "@/app/components/Reusables/FormInput"
-import  RichTextEditor from "../../dashboardComponents/RichTextEditor"
+import { RichTextEditor } from "../../dashboardComponents/RichTextEditor"
 import { useRef, useState } from "react"
 import Button from "@/app/components/Reusables/Button"
 import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories"
