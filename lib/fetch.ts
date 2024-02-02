@@ -3,7 +3,7 @@ import { CustomError } from "./CustomError"
 
 export const fetchUser = async(sessId:string)=>{
    try {
-    const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL+'/api/auth/',{
+    const res = await fetch('/api/auth/',{
         method:'POST',
         headers: {
           "Content-Type": "application/json",
