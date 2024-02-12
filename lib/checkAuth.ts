@@ -6,8 +6,7 @@ import { TokenGenerator } from "./TokenGenerator"
 import { CustomError } from "./CustomError";
 import { ErrorFormatter } from "./ErrorFormater";
 import { getUserById } from "@/dataAccess/users";
-import { cookies } from "next/headers";
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+
 
 
 export  async function checkAuth(sessId:string):Promise<ServerActionResponse>{

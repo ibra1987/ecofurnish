@@ -37,7 +37,7 @@ if(!session.success) redirect("/users/login")
           }}
         />
 
-        <main className="w-full lg:w-10/12 mx-auto  flex   justify-center items-start my-6">
+        <main className="w-full lg:w-10/12 p-4   mx-auto  flex   justify-center items-start space-x-4 my-6 ">
             <DashboardPannel session={session} />
             
                 {children}

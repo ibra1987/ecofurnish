@@ -20,15 +20,15 @@ export default function AddListing() {
 
 
   return (
-        <form   onClick={(e)=>e.stopPropagation()} className="flex-1 bg-white">
-          <h2 className="text-4xl font-bold w-full text-center my-5">Add a new listing</h2>
+        <form   onClick={(e)=>e.stopPropagation()} className="flex-1 bg-inherit flex flex-col justify-start space-y-3   rounded ">
+          <h2 className="text-4xl font-bold w-full text-center ">Add a new listing</h2>
           <FormInput
           type="text"
           name="title"
           placeholder="Add a descriptive title"
           onChange={()=>{}}
-          containerClass="w-full  bg-white   p-2 "
-          cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
+          containerClass="w-full    p-2 "
+          cssClass="outline-none  p-2 w-full border rounded   focus:border-black focus:border-2 "
           label={{
             text:"Choose a title:",
             cssClass:" block font-bold p-2 ",
@@ -36,11 +36,11 @@ export default function AddListing() {
           }}
           
           />
-          <div   className=" p-2 w-full flex flex-col justify-start bg-white " >
+          <div   className=" p-2 w-full flex flex-col justify-start " >
          <label className=" block font-bold p-2">
             Item Description:
          </label>
-          <RichTextEditor   style={{minHeight:'100px'}}  onBlur={()=>setRichTextEditorFocus(false)}  onFocus={()=>setRichTextEditorFocus(true)}    className= {`${richTextEditorFocus ? ' border-black border-2 bg-white text-lg  ' : 'w-full text-lg    bg-white '}`} />
+          <RichTextEditor   style={{minHeight:'100px'}}  onBlur={()=>setRichTextEditorFocus(false)}  onFocus={()=>setRichTextEditorFocus(true)}    className= {`${richTextEditorFocus ? ' border-black border-2 text-lg bg-white  ' : 'w-full text-lg bg-white    '}`} />
 
           </div>
           
@@ -49,19 +49,19 @@ export default function AddListing() {
           name="price"
           placeholder="0"
           onChange={()=>{}}
-          containerClass="w-full  bg-white   p-2 "
-          cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
+          containerClass="w-full    p-2 "
+          cssClass="outline-none  p-2 w-full border rounded   focus:border-black focus:border-2 "
           label={{
             text:"Set the price:",
             cssClass:" block font-bold p-2 ",
             htmlFor:"price"
           }}
           />
-           <div className="w-full  bg-white   p-2 ">
+           <div className="w-full    p-2 ">
           <label className=" block font-bold p-2">
             Item condition:
           </label>
-         <select name="category" defaultValue={""} className="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2">
+         <select name="category" defaultValue={""} className="outline-none bg-white  p-2 w-full border rounded   focus:border-black focus:border-2">
           <option className="text-gray-400"  disabled={true} value={""}>
                     Select item condition
                 </option>
@@ -72,11 +72,11 @@ export default function AddListing() {
               ))}
           </select>
          </div>
-         <div className="w-full  bg-white   p-2 ">
+         <div className="w-full    p-2 ">
           <label className=" block font-bold p-2">
             Item category:
           </label>
-         <select name="category" defaultValue={""} className="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2">
+         <select name="category" defaultValue={""} className="outline-none bg-white p-2 w-full border rounded   focus:border-black focus:border-2">
           <option className="text-gray-400"  disabled={true} value={""}>
                     choose a category
                 </option>
@@ -87,11 +87,11 @@ export default function AddListing() {
               ))}
           </select>
          </div>
-         <div className="w-full  bg-white   p-2 ">
+         <div className="w-full    p-2 ">
           <label className=" block font-bold p-2">
             Item subactegpry:
           </label>
-         <select name="subcategory" defaultValue={""} className="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2">
+         <select name="subcategory" defaultValue={""} className="outline-none bg-white  p-2 w-full border rounded   focus:border-black focus:border-2">
               <option className="text-gray-400"  disabled={true} value={""}>
                    choose a sub category
               </option>
@@ -108,8 +108,8 @@ export default function AddListing() {
           name="images"
           placeholder=""
           onChange={()=>{}}
-          containerClass="w-full  bg-white   p-2 "
-          cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
+          containerClass="w-full    p-2 "
+          cssClass="outline-none  p-2 w-full border rounded   focus:border-black focus:border-2 "
           label={{
             text:"Add images:",
             cssClass:" block font-bold p-2 ",
@@ -119,7 +119,7 @@ export default function AddListing() {
          <div className="w-full flex justify-end space-x-6 px-10">
          <Button
           text="Publish"
-          cssClass=" bg-secondary flex justify-center text-white  block font-bold p-2 rounded w-1/2 md:1/3 lg:w-1/4"
+          cssClass=" bg-secondary flex justify-center text-white  block font-bold p-2 rounded  w-1/2 md:1/3 lg:w-1/4"
           type="submit"
           formAction={(formData)=>addListingHandler(formData,userId)}
           
@@ -127,7 +127,7 @@ export default function AddListing() {
            <Button
           
           text="Save for later"
-          cssClass=" bg-gray-600 flex justify-center text-white  block font-bold p-2 rounded w-1/2 md:1/3 lg:w-1/4"
+          cssClass=" bg-gray-600 flex justify-center text-white  block font-bold p-2 rounded  w-1/2 md:1/3 lg:w-1/4"
           type="button"
           
           />
