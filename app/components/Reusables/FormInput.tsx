@@ -7,6 +7,7 @@ type formInputsType = {
     containerClass?:string,
     type:string,
     value?:string,
+    id?:string,
     name:string,
     placeholder:string,
     cssClass:string,
@@ -20,7 +21,7 @@ type formInputsType = {
 }
 
 const FormInput = ({
-type,value,placeholder,cssClass,label,name,onChange,containerClass,allowMultiple
+type,value,placeholder,cssClass,label,name,onChange,containerClass,allowMultiple,id
 }:formInputsType) => {
   return (
     <div className={containerClass}>
@@ -34,6 +35,7 @@ type,value,placeholder,cssClass,label,name,onChange,containerClass,allowMultiple
     value={value}
     className={cssClass}
     multiple={allowMultiple}
+    id={id}
     
     
     />
