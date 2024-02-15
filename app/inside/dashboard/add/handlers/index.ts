@@ -1,16 +1,18 @@
 "use client";
 
+import { AddListingAction } from "@/actions/app/listings/AddListing";
 import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories";
+import { ServerActionResponse } from "@/types/app";
 import { ListingCondition } from "@/types/listing";
 import toast from "react-hot-toast";
 
-export async function addListingHandler(formdata: FormData, userId: string) {
+export async function addListingHandler(formdata: FormData) {
   const title = formdata.get("title");
   const price = formdata.get("price");
   const condition = formdata.get("condition") as ListingCondition;
   const category = formdata.get("category");
   const subcategory = formdata.get("subcategory");
-  const images = formdata.getAll("images");
+  const images = formdata.getAll("images") as File[];
   const description = document.querySelector(".ql-editor")?.innerHTML;
   console.log(description);
   if (
@@ -58,4 +60,9 @@ export async function addListingHandler(formdata: FormData, userId: string) {
     toast.error("Please add at least two images.");
     return;
   }
+  //TODO ADD A CHECKER FOR  FILE TYPE
+
+  const { success, errors, data } = (await AddListingAction(
+    formdata
+  )) as ServerActionResponse;
 }

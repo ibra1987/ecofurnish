@@ -2,20 +2,22 @@
 
 import FormInput from "@/app/components/Reusables/FormInput";
 import { RichTextEditor } from "../../dashboardComponents/RichTextEditor";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Button from "@/app/components/Reusables/Button";
 import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories";
-import { AddListingAction } from "@/actions/app/listings/AddListing";
 import userState from "@/state/users";
 import { addListingHandler } from "../handlers";
 import { LISTING_CONDITIONS } from "@/constants/ListingCondition";
+import { put } from "@vercel/blob";
+import { revalidatePath } from "next/cache";
+import { AddListingAction } from "@/actions/app/listings/AddListing";
 
 export default function AddListing() {
   const [richTextEditorFocus, setRichTextEditorFocus] = useState(false);
   const userId = userState.state().id;
 
   return (
-    <form onClick={(e) => e.stopPropagation()} className="flex-1 bg-white">
+    <form action={addListingHandler} className="flex-1 bg-white">
       <h2 className="text-4xl font-bold w-full text-center my-5">
         Add a new listing
       </h2>
@@ -127,7 +129,6 @@ export default function AddListing() {
           text="Publish"
           cssClass=" bg-secondary outline-none flex justify-center text-white  block font-bold p-2 rounded w-1/2 md:1/3 lg:w-1/4"
           type="submit"
-          formAction={(formData) => addListingHandler(formData, userId)}
         />
         <Button
           text="Save for later"
