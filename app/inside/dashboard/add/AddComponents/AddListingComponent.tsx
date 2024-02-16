@@ -1,23 +1,28 @@
 "use client";
 
 import FormInput from "@/app/components/Reusables/FormInput";
-import { RichTextEditor } from "../../dashboardComponents/RichTextEditor";
+import { RichTextEditor } from "../../dashboardComponents/RichTextEditorComponent";
 import { useState } from "react";
 import Button from "@/app/components/Reusables/Button";
 import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories";
 import userState from "@/state/users";
 import { addListingHandler } from "../handlers";
 import { LISTING_CONDITIONS } from "@/constants/ListingCondition";
-import { put } from "@vercel/blob";
-import { revalidatePath } from "next/cache";
-import { AddListingAction } from "@/actions/app/listings/AddListing";
+import ReactQuill from "react-quill";
 
-export default function AddListing() {
+export default function AddListingComponent() {
   const [richTextEditorFocus, setRichTextEditorFocus] = useState(false);
+  const [description, setDescription] = useState("");
   const userId = userState.state().id;
 
   return (
-    <form action={addListingHandler} className="flex-1 bg-white">
+    <form
+      action={(FormData) => {
+        FormData.append("description", description);
+        addListingHandler(FormData);
+      }}
+      className="flex-1 bg-white"
+    >
       <h2 className="text-4xl font-bold w-full text-center my-5">
         Add a new listing
       </h2>
@@ -25,7 +30,6 @@ export default function AddListing() {
         type="text"
         name="title"
         placeholder="Add a descriptive title"
-        onChange={() => {}}
         containerClass="w-full  bg-white   p-2 "
         cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
         label={{
@@ -37,6 +41,7 @@ export default function AddListing() {
       <div className=" p-2 w-full flex flex-col justify-start bg-white ">
         <label className=" block font-bold p-2">Item Description:</label>
         <RichTextEditor
+          onChange={(html) => setDescription(html)} // Use onChange event instead of onDeltaChange
           style={{ minHeight: "100px" }}
           onBlur={() => setRichTextEditorFocus(false)}
           onFocus={() => setRichTextEditorFocus(true)}
@@ -52,7 +57,6 @@ export default function AddListing() {
         type="number"
         name="price"
         placeholder="0"
-        onChange={() => {}}
         containerClass="w-full  bg-white   p-2 "
         cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
         label={{
@@ -61,6 +65,7 @@ export default function AddListing() {
           htmlFor: "price",
         }}
       />
+      <input type="hidden" value={userId} name="userId" />
       <div className="w-full  bg-white   p-2 ">
         <label htmlFor="condition" className=" block font-bold p-2">
           Item condition:
@@ -94,9 +99,12 @@ export default function AddListing() {
         </select>
       </div>
       <div className="w-full  bg-white   p-2 ">
-        <label className=" block font-bold p-2">Item subactegpry:</label>
+        <label htmlFor="subCategory" className=" block font-bold p-2">
+          Item subactegpry:
+        </label>
         <select
-          name="subcategory"
+          id="subCategory"
+          name="subCategory"
           defaultValue={""}
           className="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2"
         >
@@ -115,7 +123,6 @@ export default function AddListing() {
         allowMultiple={true}
         name="images"
         placeholder=""
-        onChange={() => {}}
         containerClass="w-full  bg-white   p-2 "
         cssClass="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2 "
         label={{

@@ -1,19 +1,17 @@
-"use client"
+"use client";
 import Image from "next/image";
-import SearchModal from "../SearchComponent/SearchModal";
+import SearchModal from "../SearchComponent/SearchModalComponent";
 import { useState } from "react";
-import SearchForm from "../SearchComponent/SearchForm";
+import SearchForm from "../SearchComponent/SearchFormComponent";
 
 const Hero = () => {
-    const [showModal,setShowModal]= useState(false)
+  const [showModal, setShowModal] = useState(false);
   return (
     <section className="w-full  flex justify-center  rounded-md py-24  lg:w-10/12">
-       {
-        showModal &&  <SearchModal click={()=>setShowModal(false)}/>
-       }
+      {showModal && <SearchModal click={() => setShowModal(false)} />}
       <div className="w-full flex flex-col justify-center items-center ">
         <h1 className="w-full text-5xl lg:text-6xl xl:text-7xl text-center  font-extrabold text-yellow-100 ">
-           Affordable Used Furniture
+          Affordable Used Furniture
         </h1>
         <p className="w-10/12 lg:w-2/3  text-gray-600 p-1 py-4 text-sm md:text-base lg:p-6">
           Discover affordable style with EcoFurnish, your destination for
@@ -21,10 +19,10 @@ const Hero = () => {
           pieces a second chance.
         </p>
         <div className="w-full p-2  flex justify-center items-center">
-        {/* <button onClick={()=>setShowModal(true)} className="w-10/12 p-2 px-6 bg-fourth hover:bg-[#69382e] text-white">
+          {/* <button onClick={()=>setShowModal(true)} className="w-10/12 p-2 px-6 bg-fourth hover:bg-[#69382e] text-white">
             Search items
         </button> */}
-        <SearchForm onClick={()=>{}}/>
+          <SearchForm onClick={() => {}} />
         </div>
       </div>
 
