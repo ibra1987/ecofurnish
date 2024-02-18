@@ -18,7 +18,6 @@ export default function AddListingComponent() {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    console.log(files);
     if (!files) return;
 
     Array.from(files).forEach((file: File) => {
@@ -28,10 +27,10 @@ export default function AddListingComponent() {
           ...(prevImages || []),
           reader.result as string,
         ]);
-        reader.readAsDataURL(file);
       };
+      reader.readAsDataURL(file);
+
     });
-    console.log(files, images);
   };
   return (
     <>
