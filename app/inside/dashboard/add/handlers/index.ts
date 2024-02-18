@@ -11,54 +11,54 @@ export async function addListingHandler(formdata: FormData) {
   const price = formdata.get("price");
   const condition = formdata.get("condition") as ListingCondition;
   const category = formdata.get("category");
-  const subcategory = formdata.get("subcategory");
+  const subCategory = formdata.get("subCategory");
   const images = formdata.getAll("images") as File[];
-  const description = document.querySelector(".ql-editor")?.innerHTML;
-  // if (
-  //   !title ||
-  //   !description ||
-  //   !price ||
-  //   !images ||
-  //   !condition ||
-  //   !category ||
-  //   !subcategory
-  // ) {
-  //   toast.error("Please fill in all fields.");
-  //   return;
-  // }
+  const description = formdata.get("description");
+  if (
+    !title ||
+    !description ||
+    !price ||
+    !images ||
+    !condition ||
+    !category ||
+    !subCategory
+  ) {
+    toast.error("Please fill in all fields.");
+    return;
+  }
 
-  // //CHECK FOR TYPES AS AN EXTRA VALIDATION STEP
-  // if (typeof title !== "string" || typeof description !== "string") {
-  //   toast.error("Some fields are missing.");
+  //CHECK FOR TYPES AS AN EXTRA VALIDATION STEP
+  if (typeof title !== "string" || typeof description !== "string") {
+    toast.error("Some fields are missing.");
 
-  //   return;
-  // }
+    return;
+  }
 
-  // if (
-  //   typeof condition !== "string" &&
-  //   (condition !== "excellent" || condition !== "good" || condition !== "fair")
-  // ) {
-  //   toast.error("Please select item condition.");
+  if (
+    typeof condition !== "string" &&
+    (condition !== "excellent" || condition !== "good" || condition !== "fair")
+  ) {
+    toast.error("Please select item condition.");
 
-  //   return;
-  // }
+    return;
+  }
 
-  // if (!Object.keys(LISTINGS_CATEGORIES).includes(category as string)) {
-  //   toast.error("Invalid category.");
+  if (!Object.keys(LISTINGS_CATEGORIES).includes(category as string)) {
+    toast.error("Invalid category.");
 
-  //   return;
-  // }
-  // if (LISTINGS_CATEGORIES[subcategory as keyof typeof LISTINGS_CATEGORIES]) {
-  //   toast.error("Invalid sub category.");
-  //   return;
-  // }
+    return;
+  }
+  if (LISTINGS_CATEGORIES[subCategory as keyof typeof LISTINGS_CATEGORIES]) {
+    toast.error("Invalid sub category.");
+    return;
+  }
 
-  // //check for images - every listing should have at least 2 images with one of them as a  featured image
+  //check for images - every listing should have at least 2 images with one of them as a  featured image
 
-  // if (!images || images.length < 2) {
-  //   toast.error("Please add at least two images.");
-  //   return;
-  // }
+  if (!images || images.length < 2) {
+    toast.error("Please add at least two images.");
+    return;
+  }
   //TODO ADD A CHECKER FOR  FILE TYPE
 
   const { success, errors, data } = (await AddListingAction(
@@ -70,4 +70,7 @@ export async function addListingHandler(formdata: FormData) {
     toast.error(errorString);
     return;
   }
+
+  console.log(data);
+  toast.success("added successfuly");
 }

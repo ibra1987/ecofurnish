@@ -28,8 +28,7 @@ export default {
     {
       name: "description",
       title: "Description",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "string",
     },
     {
       name: "price",
@@ -45,7 +44,7 @@ export default {
       },
     },
     {
-      name: "subCargeory",
+      name: "subCategory",
       title: "Subcategory",
       type: "string",
     },
@@ -63,6 +62,9 @@ export default {
       name: "publishedAt",
       title: "Published At",
       type: "date",
+      options: {
+        initialValue: new Date().toISOString(),
+      },
     },
     // New fields for image gallery
     {

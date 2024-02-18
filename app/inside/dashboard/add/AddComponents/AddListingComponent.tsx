@@ -13,9 +13,13 @@ import ImagesContainerComponent from "./ImagesContainerComponent";
 export default function AddListingComponent() {
   const [richTextEditorFocus, setRichTextEditorFocus] = useState(false);
   const [description, setDescription] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [images, setImages] = useState<string[] | null>([]);
   const userId = userState.state().id;
 
+  const subCategories =
+    LISTINGS_CATEGORIES[selectedCategory as keyof typeof LISTINGS_CATEGORIES] ||
+    [];
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (!files) return;
@@ -29,7 +33,6 @@ export default function AddListingComponent() {
         ]);
       };
       reader.readAsDataURL(file);
-
     });
   };
   return (
@@ -105,7 +108,8 @@ export default function AddListingComponent() {
           <label className=" block font-bold p-2">Item category:</label>
           <select
             name="category"
-            defaultValue={""}
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
             className="outline-none  p-2 w-full border rounded  focus:border-black focus:border-2"
           >
             <option className="text-gray-400" disabled={true} value={""}>
@@ -129,11 +133,9 @@ export default function AddListingComponent() {
             <option className="text-gray-400" disabled={true} value={""}>
               choose a sub category
             </option>
-            {LISTINGS_CATEGORIES["Accent Furniture"].map(
-              (subcategory: string) => (
-                <option key={subcategory}>{subcategory}</option>
-              )
-            )}
+            {subCategories.map((subcategory: string) => (
+              <option key={subcategory}>{subcategory}</option>
+            ))}
           </select>
         </div>
         <FormInput
