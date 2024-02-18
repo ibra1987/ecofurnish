@@ -1,13 +1,8 @@
-
 import { client } from "@/sanity/lib/client";
 import { Listing } from "@/types/listing";
 
-import ListingsWrapper from "./ListingsWrapper";
-import ListingsFilters from "./ListingsFilters";
-
-
-
-
+import ListingsWrapper from "./ListingsWrapperComponent";
+import ListingsFilters from "./ListingsFiltersComponent";
 
 export default async function page() {
   const listings =
@@ -25,14 +20,11 @@ export default async function page() {
     PublishedAt
   }`)) as Listing[];
 
-
   return (
-   <section className=" flex flex-col justify-start items-center min-h-screen">
-        <div className="w-full lg:w-10/12 flex  items-start my-10">
-      
+    <section className=" flex flex-col justify-start items-center min-h-screen">
+      <div className="w-full lg:w-10/12 flex  items-start my-10">
         <ListingsWrapper listings={listings} />
-        
-        </div>
-   </section>
+      </div>
+    </section>
   );
 }
