@@ -20,6 +20,7 @@ export async function AddListingAction(
   const images = formdata.getAll("images") as File[];
   const description = formdata.get("description") as string;
   const user = formdata.get("userId") as string;
+  const  featuredImage = formdata.get("featuredImage") as string
   // TODO CHECK VAKIDITY OIF FIELDS SERVER SIDE AND RETURN SERVER ACTION RESPONSE AND REVALIDATE PATH
 
   try {
@@ -77,10 +78,23 @@ export async function AddListingAction(
           _type: "image",
           _key: imageKey, // Include the generated _key for the image
           asset: { _type: "reference", _ref: uploadedImage._id },
+          url:uploadedImage.url,
+          name:uploadedImage.originalFilename,
+          id:uploadedImage._id
         };
       })
     );
 
+    const mainImage = uploadedImages.find((image)=>image.name === featuredImage) || uploadedImages[0]  
+    console.log(mainImage)
+    const _featuredImage = {
+      _type: 'image',
+      asset: {
+        _type: 'reference',
+       _ref: mainImage.id.split("-")[1], 
+      },
+    }
+    console.log(_featuredImage)
     const dataObject = {
       _type: "listing",
       title,
@@ -90,7 +104,9 @@ export async function AddListingAction(
       subCategory,
       description,
       user,
+      featuredImage:_featuredImage,
       images: uploadedImages,
+      publishedAt:new Date().toISOString()
     };
     const insertionResponse = await sanityClient.create(dataObject);
     return {

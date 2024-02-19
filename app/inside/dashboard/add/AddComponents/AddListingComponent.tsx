@@ -8,13 +8,14 @@ import { LISTINGS_CATEGORIES } from "@/constants/ListingCatgories";
 import userState from "@/state/users";
 import { addListingHandler } from "../handlers";
 import { LISTING_CONDITIONS } from "@/constants/ListingCondition";
-import ImagesContainerComponent from "./ImagesContainerComponent";
+import ImagesContainerComponent, { ImageInfo } from "./ImagesContainerComponent";
 
 export default function AddListingComponent() {
   const [richTextEditorFocus, setRichTextEditorFocus] = useState(false);
+  const [featuredImage,setFeauturedImage]=useState('')
   const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [images, setImages] = useState<string[] | null>([]);
+  const [imagesInfo, setImagesInfo] = useState<ImageInfo[]>([]);
   const userId = userState.state().id;
 
   const subCategories =
@@ -27,9 +28,12 @@ export default function AddListingComponent() {
     Array.from(files).forEach((file: File) => {
       const reader = new FileReader();
       reader.onload = () => {
-        setImages((prevImages) => [
-          ...(prevImages || []),
-          reader.result as string,
+        setImagesInfo((prevImages) => [
+         ...prevImages,
+          {
+            path:reader.result as string,
+            name:file.name
+          },
         ]);
       };
       reader.readAsDataURL(file);
@@ -40,6 +44,7 @@ export default function AddListingComponent() {
       <form
         action={(FormData) => {
           FormData.append("description", description);
+          FormData.append("featuredImage",featuredImage)
           addListingHandler(FormData);
         }}
         className="flex-1 bg-white"
@@ -167,8 +172,8 @@ export default function AddListingComponent() {
           />
         </div>
       </form>
-      {images && images.length > 0 && (
-        <ImagesContainerComponent imagePaths={images} />
+      {imagesInfo && imagesInfo.length > 0 && (
+        <ImagesContainerComponent featuredImage={featuredImage} imagesInfo={imagesInfo}  setFeaturedImage={setFeauturedImage} />
       )}
     </>
   );

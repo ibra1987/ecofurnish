@@ -61,23 +61,21 @@ export default {
     {
       name: "publishedAt",
       title: "Published At",
-      type: "date",
-      options: {
-        initialValue: new Date().toISOString(),
-      },
+      type: "datetime",
+   
     },
     // New fields for image gallery
     {
       name: "images",
       title: "Images",
       type: "array",
-      of: [{ type: "image" }],
+      of: [{ type: "image" }], // Assuming "image" represents image assets
     },
     {
       name: "featuredImage",
       title: "Featured Image",
       type: "reference",
-      to: [{ type: "image" }],
-    },
+      to: [{ type: "image" }], // Corrected reference to image assets
+    }
   ],
 };

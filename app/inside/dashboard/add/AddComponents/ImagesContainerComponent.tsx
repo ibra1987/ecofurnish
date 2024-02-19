@@ -1,17 +1,34 @@
+"use client"
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-function ImagesContainerComponent({ imagePaths }: { imagePaths: string[] }) {
+export type ImageInfo = {
+  name:string,
+  path:string
+}
+function ImagesContainerComponent({ imagesInfo,setFeaturedImage,featuredImage}: {featuredImage:string, imagesInfo: ImageInfo[],setFeaturedImage:(imageName:string)=>void }) {
+  const [divClass,setDivClass]=useState('p-2 border rounded cursor-pointer')
+
+  const selectFeaturedImage=(name:string)=>{
+        
+    setFeaturedImage(name)
+    setDivClass("p-2  border-2 rounded bg-red-400 cursor-pointer")
+      console.log(featuredImage)
+      console.log(divClass)
+  }
+  
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 my-10">
-      {imagePaths &&
-        imagePaths.map((imagePath: string) => {
-          const imageSrc = imagePath;
+      {imagesInfo &&
+        imagesInfo.map((info: ImageInfo) => {
+          const imageSrc = info.path;
 
           return (
-           <div key={imagePath} className=" p-2 border rounded">
+           <div  onClick={()=>selectFeaturedImage(info.name)}  key={info.path}
+            className={divClass}>
              <Image
               alt="listing_image"
-              src={imageSrc}
+              src={imageSrc} 
               width={300}
               height={200}
               className="rounded"
